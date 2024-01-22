@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
+import { IoChevronUpSharp } from "react-icons/io5";
 
 const Register = () => {
 
@@ -60,6 +61,13 @@ const Register = () => {
                                         <input {...register("role", { required: true })} value="owner" type="radio" name="role" className="radio checked:bg-blue-500" />
                                     </label>
                                 </div>
+                                {
+                                    errors.role &&
+                                    <div className='inline-flex gap-2 animate-bounce'>
+                                        <p className='font-bold text-red-500'>Role field is empty</p>
+                                        {/* <p><IoChevronUpSharp size={30} /></p> */}
+                                    </div>
+                                }
                             </div>
                             <input className='btn btn-success mt-6' type="submit" value="Register" />
                         </form>
