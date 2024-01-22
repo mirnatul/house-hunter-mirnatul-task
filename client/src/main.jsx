@@ -11,6 +11,8 @@ import { router } from './Routes/Router';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div className='max-w-full mx-auto px-2 lg:px-10'>
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>,
 )
