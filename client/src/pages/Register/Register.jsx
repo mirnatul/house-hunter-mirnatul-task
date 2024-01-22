@@ -1,0 +1,74 @@
+import React from 'react';
+import { useForm } from "react-hook-form"
+
+const Register = () => {
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        console.log(data)
+    }
+
+    // console.log(watch("example")) // watch input value by passing the name of it
+
+    return (
+        <div>
+            <div className="hero min-h-screen">
+                <div className="hero-content">
+                    <div className="card shrink-0 shadow-2xl bg-base-100 w-[500px]">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body w-full">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name:</span>
+                                </label>
+                                <input {...register("name", { required: true })} type="text" placeholder="Enter your full name..." className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email:</span>
+                                </label>
+                                <input {...register("email", { required: true })} type="email" placeholder="Enter your email..." className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password:</span>
+                                </label>
+                                <input {...register("password", { required: true })} type="password" placeholder="Enter your password..." className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Phone Number:</span>
+                                </label>
+                                <input {...register("phone", { required: true })} type="" placeholder="Enter your mobile number..." className="input input-bordered" required />
+                            </div>
+                            <div className='my-3'>
+                                <label>User Role:</label>
+                                <div className="form-control">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text">I'm a renter</span>
+                                        <input {...register("role", { required: true })} value="renter" type="radio" name="role" className="radio checked:bg-blue-500" />
+                                    </label>
+                                </div>
+                                <div className="form-control">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text">I'm an owner</span>
+                                        <input {...register("role", { required: true })} value="owner" type="radio" name="role" className="radio checked:bg-blue-500" />
+                                    </label>
+                                </div>
+                            </div>
+                            <input className='btn btn-success mt-6' type="submit" value="Register" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    );
+};
+
+export default Register;
