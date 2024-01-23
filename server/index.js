@@ -30,7 +30,22 @@ async function run() {
         await client.connect();
         // Send a ping to confirm a successful connection
 
+        const userCollection = client.db('houseHunterDB').collection('users')
 
+        // user management
+        // same email database push blocked
+        app.post('/users', async (req, res) => {
+            const newUser = req.body;
+            const query = { email: newUser.email }
+            const existingUser = await userCollection.findOne(query)
+            if (existingUser.email === newUser.email) {
+                res.send({ message: 'User already exist.' })
+            }
+            else {
+                const result = await userCollection.insertOne(newUser)
+                res.send(result)
+            }
+        })
 
 
 
