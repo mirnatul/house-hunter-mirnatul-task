@@ -31,6 +31,7 @@ async function run() {
         // Send a ping to confirm a successful connection
 
         const userCollection = client.db('houseHunterDB').collection('users')
+        const houseCollection = client.db('houseHunterDB').collection('houses')
 
         // user management
         // same email database push blocked
@@ -62,6 +63,13 @@ async function run() {
             else {
                 res.send({ message: 'user not found!' })
             }
+        })
+
+        // house admin api
+        app.post('/newhouse', async (req, res) => {
+            const newHouse = req.body;
+            const result = await houseCollection.insertOne(newHouse)
+            res.send(result)
         })
 
 

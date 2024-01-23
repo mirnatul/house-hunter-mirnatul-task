@@ -20,19 +20,19 @@ const Dashboard = () => {
                         user?.role === 'owner' ?
                             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                                 {/* Sidebar content here */}
-                                <Link to='/dashboard/ownerhome' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'><a>Owner Home</a></Link>
-                                <Link to='/dashboard/managehouse' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'><a>Manage House</a></Link>
-                                <Link to='/dashboard/addnewhouse' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'><a>Add New House</a></Link>
+                                <Link to='/dashboard/ownerhome' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'>Owner Home</Link>
+                                <Link to='/dashboard/managehouse' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'>Manage House</Link>
+                                <Link to='/dashboard/addnewhouse' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'>Add New House</Link>
                                 <div className='divider'></div>
-                                <Link className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2' to='/'><a>Home</a></Link>
+                                <Link className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2' to='/'>Home</Link>
                             </ul>
                             :
                             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                                 {/* Sidebar content here */}
-                                <Link to='/dashboard/renterhome' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'><a>Renter Home</a></Link>
-                                <Link to='/dashboard/bookedhouse' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'><a>Booked House</a></Link>
+                                <Link to='/dashboard/renterhome' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'>Renter Home</Link>
+                                <Link to='/dashboard/bookedhouse' className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2'>Booked House</Link>
                                 <div className='divider'></div>
-                                <Link className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2' to='/'><a>Home</a></Link>
+                                <Link className='font-semibold text-lg mb-2 hover:bg-slate-200 p-2' to='/'>Home</Link>
                             </ul>
                     }
                 </div>
