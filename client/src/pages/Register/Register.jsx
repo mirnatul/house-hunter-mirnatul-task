@@ -13,6 +13,23 @@ const Register = () => {
 
     const onSubmit = (data) => {
         console.log(data)
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert("user created successfully")
+                }
+                else {
+                    alert(data.message)
+                }
+            })
     }
 
     // console.log(watch("example")) // watch input value by passing the name of it
