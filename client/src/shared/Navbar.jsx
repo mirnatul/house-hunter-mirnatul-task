@@ -18,6 +18,7 @@ const Navbar = () => {
 
     const navOptions = <>
         <Link to="/"><a>Home</a></Link>
+        <Link className='ml-5' to="/dashboard"><a>Dashboard</a></Link>
     </>
 
     return (
@@ -32,7 +33,7 @@ const Navbar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl">House Hunter</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

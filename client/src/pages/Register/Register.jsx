@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 // import { IoChevronUpSharp } from "react-icons/io5";
 
 const Register = () => {
@@ -32,8 +32,13 @@ const Register = () => {
                     alert("user created successfully")
                     const userJson = JSON.stringify(userInput);
                     localStorage.setItem("user", userJson);
-                    navigate(1)
-                    navigate('/')
+                    // navigate(1)
+                    if (userInput.role === 'owner') {
+                        navigate('/dashboard/ownerhome')
+                    }
+                    else {
+                        navigate('/dashboard/renterhome')
+                    }
                 }
                 else {
                     alert(data.message)
@@ -96,6 +101,8 @@ const Register = () => {
                                 }
                             </div>
                             <input className='btn btn-success mt-6' type="submit" value="Register" />
+                            <p>Already have an account? <Link to='/login' className='font-bold text-blue-500'>Login</Link></p>
+                            <Link to='/' className='btn btn-primary'>Go to Home</Link>
                         </form>
                     </div>
                 </div>

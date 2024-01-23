@@ -25,10 +25,16 @@ const Login = () => {
                     alert(data.message)
                 }
                 else {
-                    console.log(data);
+                    // console.log(data);
                     const userJson = JSON.stringify(data);
                     localStorage.setItem("user", userJson);
-                    navigate('/')
+
+                    if (data.role === 'owner') {
+                        navigate('/dashboard/ownerhome')
+                    }
+                    else {
+                        navigate('/dashboard/renterhome')
+                    }
                 }
             })
     }
@@ -53,6 +59,7 @@ const Login = () => {
                                 <input {...register("password", { required: true })} type="password" placeholder="Enter your password..." className="input input-bordered" required />
                             </div>
                             <input className='btn btn-success mt-6' type="submit" value="Login" />
+                            <p>New? <Link to='/register' className='font-bold text-blue-500'>Register</Link></p>
                             <Link to='/' className='btn btn-primary'>Go to Home</Link>
                         </form>
                     </div>
