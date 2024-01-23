@@ -1,8 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
-import { IoChevronUpSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom"
+// import { IoChevronUpSharp } from "react-icons/io5";
 
 const Register = () => {
+
+    const navigate = useNavigate()
 
     const {
         register,
@@ -12,19 +15,25 @@ const Register = () => {
     } = useForm()
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
+
+        const userInput = { ...data }
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(userInput)
         })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
                     alert("user created successfully")
+                    const userJson = JSON.stringify(userInput);
+                    localStorage.setItem("user", userJson);
+                    navigate(1)
+                    navigate('/')
                 }
                 else {
                     alert(data.message)

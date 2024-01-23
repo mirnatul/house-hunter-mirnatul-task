@@ -38,12 +38,29 @@ async function run() {
             const newUser = req.body;
             const query = { email: newUser.email }
             const existingUser = await userCollection.findOne(query)
-            if (existingUser.email === newUser.email) {
+            if (existingUser && existingUser.email === newUser.email) {
                 res.send({ message: 'User already exist.' })
             }
             else {
                 const result = await userCollection.insertOne(newUser)
                 res.send(result)
+            }
+        })
+
+        // login check
+        app.get('/login', async (req, res) => {
+            const email = req.query.email
+            const password = req.query.password
+            const query = {
+                email: email,
+                password: password
+            }
+            const existingUser = await userCollection.findOne(query)
+            if (existingUser) {
+                res.send(existingUser)
+            }
+            else {
+                res.send({ message: 'user not found!' })
             }
         })
 
