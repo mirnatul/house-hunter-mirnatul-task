@@ -32,6 +32,7 @@ async function run() {
 
         const userCollection = client.db('houseHunterDB').collection('users')
         const houseCollection = client.db('houseHunterDB').collection('houses')
+        const bookingCollection = client.db('houseHunterDB').collection('bookings')
 
         // user management
         // same email database push blocked
@@ -81,7 +82,7 @@ async function run() {
         app.get('/newhouse', async (req, res) => {
             const email = req.query.email
             const query = { email: email }
-            const result = await houseCollection.find().toArray()
+            const result = await houseCollection.find(query).toArray()
             res.send(result)
         })
 
@@ -114,6 +115,21 @@ async function run() {
                 }
             }
             const result = await houseCollection.updateOne(filter, houseData, options)
+            res.send(result)
+        })
+
+        // bookings collection
+        app.post('/bookings', async (req, res) => {
+            const bookings = req.body
+            const result = await bookingCollection.insertOne(bookings)
+            res.send(result)
+        })
+
+        app.get('/bookings', async (req, res) => {
+            const email = req.query.email
+            console.log(email);
+            const query = { renterEmail: email }
+            const result = await bookingCollection.find(query).toArray()
             res.send(result)
         })
 
