@@ -21,6 +21,7 @@ const AddNewHouse = () => {
             .then(data => {
                 if (data.insertedId) {
                     alert('New house details added successful!')
+                    reset()
                 }
             })
     }
@@ -30,6 +31,7 @@ const AddNewHouse = () => {
 
     return (
         <div>
+            <h2 className='text-center font-bold text-4xl mb-6'>Add New House</h2>
             <div className="hero min-h-screen">
                 <div className="hero-content">
                     <div className="card shrink-0 w-[500px] shadow-2xl">
@@ -75,7 +77,7 @@ const AddNewHouse = () => {
                                 <label className="label">
                                     <span className="label-text">Room Size:</span>
                                 </label>
-                                <input {...register("room size", { required: true })} type="number" placeholder="Room Size (in sqrfeet)" className="input input-bordered" required />
+                                <input {...register("size", { required: true })} type="number" placeholder="Room Size (in sqrfeet)" className="input input-bordered" required />
                             </div>
                             {/* picture */}
                             <div className="form-control">
@@ -89,19 +91,7 @@ const AddNewHouse = () => {
                                 <label className="label">
                                     <span className="label-text">Availability Date:</span>
                                 </label>
-                                <input {...register("picture", { required: true })} type="date" placeholder="Enter room url..." className="input input-bordered" required />
-                                {/* <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <span className="label-text">Available</span>
-                                        <input {...register("availability", { required: true })} type="radio" name="availability" value="Available" className="radio checked:bg-blue-500" />
-                                    </label>
-                                </div>
-                                <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <span className="label-text">Not Available</span>
-                                        <input {...register("availability", { required: true })} type="radio" name="availability" value="Not available" className="radio checked:bg-blue-500" />
-                                    </label>
-                                </div> */}
+                                <input {...register("availability", { required: true })} type="date" placeholder="Enter room url..." className="input input-bordered" required />
                             </div>
                             {
                                 errors.availability &&

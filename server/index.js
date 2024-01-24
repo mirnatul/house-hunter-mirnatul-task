@@ -12,7 +12,7 @@ app.use(express.json())
 
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.dudbtcu.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -69,6 +69,45 @@ async function run() {
         app.post('/newhouse', async (req, res) => {
             const newHouse = req.body;
             const result = await houseCollection.insertOne(newHouse)
+            res.send(result)
+        })
+
+        app.get('/newhouse', async (req, res) => {
+            const email = req.query.email
+            const query = { email: email }
+            const result = await houseCollection.find().toArray()
+            res.send(result)
+        })
+
+        app.get('/newhouse/:id', async (req, res) => {
+            const id = req.params.id
+            // console.log(id);
+            const query = { _id: new ObjectId(id) }
+            const result = await houseCollection.findOne(query)
+            res.send(result)
+        })
+
+        app.put('/newhouse/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) }
+            const options = { upsert: true }
+            const updateHouseData = req.body
+            const houseData = {
+                $set: {
+                    name: updateHouseData.name,
+                    address: updateHouseData.address,
+                    city: updateHouseData.city,
+                    bedrooms: updateHouseData.bedrooms,
+                    bathrooms: updateHouseData.bathrooms,
+                    picture: updateHouseData.picture,
+                    availability: updateHouseData.availability,
+                    rent: updateHouseData.rent,
+                    phone: updateHouseData.phone,
+                    description: updateHouseData.description,
+                    size: updateHouseData.size
+                }
+            }
+            const result = await houseCollection.updateOne(filter, houseData, options)
             res.send(result)
         })
 
