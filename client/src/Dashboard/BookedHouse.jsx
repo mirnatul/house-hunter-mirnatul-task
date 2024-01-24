@@ -11,7 +11,7 @@ const BookedHouse = () => {
     useEffect(() => {
         const userJson = localStorage.getItem("user");
         const usertwo = JSON.parse(userJson);
-        fetch(`http://localhost:5000/bookings?email=${usertwo.email}`)
+        fetch(`https://server-hazel-theta.vercel.app/bookings?email=${usertwo.email}`)
             .then(res => res.json())
             .then(data => {
                 setHouseData(data);

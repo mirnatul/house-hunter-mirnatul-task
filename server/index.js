@@ -27,7 +27,7 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
+        // await client.connect();
         // Send a ping to confirm a successful connection
 
         const userCollection = client.db('houseHunterDB').collection('users')
@@ -127,7 +127,7 @@ async function run() {
 
         app.get('/bookings', async (req, res) => {
             const email = req.query.email
-            console.log(email);
+            // console.log(email);
             const query = { renterEmail: email }
             const result = await bookingCollection.find(query).toArray()
             res.send(result)

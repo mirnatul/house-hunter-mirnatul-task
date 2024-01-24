@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router'
 
 const Navbar = () => {
     const [user] = userHook()
+    console.log('hello', user);
 
     const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ const Navbar = () => {
 
     const navOptions = <>
         <Link to="/"><a>Home</a></Link>
-        <Link className='ml-5' to="/dashboard"><a>Dashboard</a></Link>
+        {user ? <Link className='ml-5' to="/dashboard"><a>Dashboard</a></Link> : <p className='text-red-500 ml-5'>Login to see dashboard</p>}
     </>
 
     return (
@@ -51,7 +52,6 @@ const Navbar = () => {
                                 : <Link className='btn btn-primary' to='/login'>Login</Link>
                         }
                     </div>
-                    {/* <p>{user?.name}</p> */}
                 </div>
             </div>
         </div>

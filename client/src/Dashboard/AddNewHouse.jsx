@@ -10,7 +10,7 @@ const AddNewHouse = () => {
         data.email = user.email
         console.log(data);
 
-        fetch('http://localhost:5000/newhouse', {
+        fetch('https://server-hazel-theta.vercel.app/newhouse', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

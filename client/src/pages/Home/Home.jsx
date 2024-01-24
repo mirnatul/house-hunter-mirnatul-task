@@ -9,7 +9,7 @@ const Home = () => {
     useEffect(() => {
         // const userJson = localStorage.getItem("user");
         // const usertwo = JSON.parse(userJson);
-        fetch(`http://localhost:5000/allhouse`)
+        fetch(`https://server-hazel-theta.vercel.app/allhouse`)
             .then(res => res.json())
             .then(data => {
                 setAllHouse(data);
@@ -27,7 +27,7 @@ const Home = () => {
         singleHouse.renterEmail = userTwo.email
         singleHouse.renterName = userTwo.name
         singleHouse.renterPhone = userTwo.phone
-        fetch(`http://localhost:5000/bookings`, {
+        fetch(`https://server-hazel-theta.vercel.app/bookings`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

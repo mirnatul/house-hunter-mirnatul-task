@@ -26,7 +26,7 @@ const ManageHouse = () => {
         data.email = user.email
         // console.log(data);
 
-        fetch(`http://localhost:5000/newhouse/${modalData._id}`, {
+        fetch(`https://server-hazel-theta.vercel.app/newhouse/${modalData._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ const ManageHouse = () => {
     useEffect(() => {
         const userJson = localStorage.getItem("user");
         const usertwo = JSON.parse(userJson);
-        fetch(`http://localhost:5000/newhouse?email=${usertwo.email}`)
+        fetch(`https://server-hazel-theta.vercel.app/newhouse?email=${usertwo.email}`)
             .then(res => res.json())
             .then(data => {
                 setHouseData(data);

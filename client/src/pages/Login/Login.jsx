@@ -18,7 +18,7 @@ const Login = () => {
 
         const userInput = { ...data }
 
-        fetch(`http://localhost:5000/login?email=${userInput.email}&password=${userInput.password}`)
+        fetch(`https://server-hazel-theta.vercel.app/login?email=${userInput.email}&password=${userInput.password}`)
             .then(res => res.json())
             .then(data => {
                 if (data.message) {
