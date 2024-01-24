@@ -65,6 +65,12 @@ async function run() {
             }
         })
 
+        // all house for homepage
+        app.get('/allhouse', async (req, res) => {
+            const result = await houseCollection.find().toArray()
+            res.send(result)
+        })
+
         // house admin api
         app.post('/newhouse', async (req, res) => {
             const newHouse = req.body;
